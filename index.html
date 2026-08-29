@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Access Your Pearson+ eTextbook</title>
+<meta name="description" content="A quick student guide for accessing a Pearson eTextbook through Dallas College Brightspace.">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600&display=swap");
+:root{
+  --navy:#14213d;
+  --navy-2:#1c2f52;
+  --blue:#1769aa;
+  --blue-soft:#eaf4fb;
+  --gold:#d8b15a;
+  --ink:#1f2937;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --bg:#f7f9fc;
+  --white:#fff;
+  --green:#18794e;
+  --shadow:0 12px 35px rgba(20,33,61,.10);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Inter","Roboto",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+}
+a{color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 86% 25%, rgba(77,151,207,.20), transparent 27%),
+    radial-gradient(circle at 70% 110%, rgba(216,177,90,.10), transparent 35%),
+    linear-gradient(135deg,#101b31 0%,#162642 55%,#0d172b 100%);
+  color:white;
+  border-bottom:3px solid var(--gold);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.18;
+  background-image:
+    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to right,black,transparent 82%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding:68px 0 58px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Roboto Mono",monospace;
+  font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:#f1d889;margin-bottom:16px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+h1{font-size:clamp(2.25rem,5vw,4rem);letter-spacing:-.045em;line-height:1.02;margin:0 0 18px;max-width:800px}
+.hero p{font-size:1.05rem;max-width:720px;color:#dbe5f2;margin:0 0 30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 18px;border-radius:10px;text-decoration:none;
+  font-weight:800;border:1px solid transparent;
+}
+.btn-primary{background:white;color:var(--navy)}
+.btn-outline{border-color:#8fa2bf;color:white}
+.notice{
+  margin-top:30px;padding:18px 20px;border:1px solid rgba(216,177,90,.45);
+  background:rgba(255,255,255,.07);border-radius:14px;max-width:760px;
+}
+.notice strong{color:#f5db91}
+.guide-layout{
+  width:min(1240px,94%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:245px minmax(0,1fr);
+  gap:34px;
+  align-items:start;
+}
+.toc{
+  position:sticky;
+  top:24px;
+  z-index:10;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 10px 28px rgba(20,33,61,.07);
+  margin-top:42px;
+}
+.toc-label{
+  font-family:"Roboto Mono","SFMono-Regular",Consolas,monospace;
+  font-size:.68rem;
+  letter-spacing:.12em;
+  font-weight:700;
+  color:#94a3b8;
+  margin:2px 8px 12px;
+}
+.toc-inner{display:grid;gap:6px}
+.toc-item{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:10px;
+  align-items:center;
+  text-decoration:none;
+  color:var(--muted);
+  padding:11px 10px;
+  border-radius:12px;
+  border:1px solid transparent;
+  transition:.18s ease;
+}
+.toc-item:hover{
+  background:#f8fafc;
+  border-color:var(--line);
+  color:var(--navy);
+  transform:translateX(2px);
+}
+.toc-item:focus-visible{
+  outline:2px solid var(--blue);
+  outline-offset:2px;
+}
+.toc-item.active{
+  background:var(--blue-soft);
+  color:var(--navy);
+  border-color:#d5e9f7;
+}
+.toc-number{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:#edf1f7;
+  color:var(--navy);
+  font-family:"Roboto Mono",monospace;
+  font-size:.68rem;
+  font-weight:700;
+}
+.toc-item.active .toc-number{
+  background:var(--navy);
+  color:white;
+}
+.toc-item strong{display:block;font-size:.87rem;line-height:1.2}
+.toc-item small{display:block;font-size:.72rem;color:#94a3b8;margin-top:2px}
+.toc-tip{
+  margin-top:15px;
+  padding:13px;
+  background:#fffaf0;
+  border:1px solid #ead59b;
+  border-radius:12px;
+}
+.toc-tip span{
+  font-family:"Roboto Mono",monospace;
+  font-size:.64rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:#8a6a16;
+}
+.toc-tip p{margin:4px 0 0;font-size:.76rem;line-height:1.45;color:#765b18}
+.content-area{padding:42px 0 80px}
+.step{
+  background:white;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:30px;margin-bottom:34px;scroll-margin-top:80px;
+}
+.step-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}
+.num{
+  flex:0 0 46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:var(--navy);color:white;font-weight:900;font-size:1.15rem;
+  box-shadow:0 0 0 6px #edf1f7;
+}
+.step h2{font-size:1.75rem;line-height:1.15;margin:0 0 6px;color:var(--navy)}
+.step .lead{margin:0;color:var(--muted)}
+.substeps{display:grid;gap:18px}
+.substep{
+  border:1px solid var(--line);border-radius:14px;padding:20px;background:#fbfcfe;
+}
+.substep h3{margin:0 0 8px;font-size:1.06rem}
+.substep p{margin:0 0 12px;color:#475569}
+.substep p:last-child{margin-bottom:0}
+.visual{
+  margin-top:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f1f5f9;
+}
+.visual img{display:block;width:100%;height:auto}
+.caption{font-size:.86rem;color:var(--muted);padding:10px 12px;background:white}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.path{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;
+}
+.pill{background:var(--blue-soft);color:#0f5d96;border-radius:999px;padding:7px 12px;font-weight:800;font-size:.9rem}
+.arrow{color:#94a3b8;font-weight:900}
+.success{
+  background:#eef8f2;border:1px solid #b7dfc7;border-radius:14px;padding:18px 20px;
+  margin-top:20px;
+}
+.success strong{color:var(--green)}
+.bonus{
+  border-left:5px solid var(--gold);background:#fffaf0;border-radius:12px;padding:20px;margin-top:20px
+}
+.bonus h3{margin:0 0 6px;color:#765b18}
+.trouble{
+  background:var(--navy);color:white;border-radius:var(--radius);padding:30px;margin-top:34px
+}
+.trouble h2{margin-top:0}
+.trouble p{color:#dbe5f2}
+.footer{text-align:center;color:var(--muted);padding:28px 0;border-top:1px solid var(--line);font-size:.9rem}
+@media(max-width:900px){
+  .guide-layout{
+    grid-template-columns:1fr;
+    width:min(1120px,92%);
+    gap:0;
+  }
+  .toc{
+    position:sticky;
+    top:0;
+    margin:0;
+    border-radius:0 0 16px 16px;
+    padding:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    overflow:auto;
+    box-shadow:0 8px 20px rgba(20,33,61,.08);
+  }
+  .toc-label,.toc-tip{display:none}
+  .toc-inner{display:flex;min-width:max-content;gap:5px}
+  .toc-item{
+    grid-template-columns:28px 1fr;
+    min-width:170px;
+    padding:8px;
+  }
+  .toc-item small{display:none}
+  .toc-number{width:27px;height:27px}
+  .content-area{padding:34px 0 65px}
+}
+@media(max-width:760px){
+  .hero-inner{padding:46px 0}
+  .step{padding:22px}
+  .two-col{grid-template-columns:1fr}
+  .step h2{font-size:1.45rem}
+  .num{flex-basis:40px;height:40px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">Calculus · Student Quick Guide</div>
+    <h1>Access Your Pearson+ eTextbook</h1>
+    <p>Follow these steps in order to unlock your Calculus eTextbook through Pearson. The most important part is <strong>Step 1 — it must be done first.</strong></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#step1">Start Step 1</a>
+      <a class="btn btn-outline" href="https://plus.pearson.com" target="_blank" rel="noopener">Open Pearson+</a>
+    </div>
+    <div class="notice"><strong>Important:</strong> Start a Pearson homework assignment in Brightspace and attempt at least one question before going to Pearson+.</div>
+  </div>
+</header>
+
+<div class="guide-layout">
+  <aside class="toc" aria-label="Guide navigation">
+    <div class="toc-label">QUICK NAVIGATION</div>
+    <div class="toc-inner">
+      <a class="toc-item" href="#step1">
+        <span class="toc-number">01</span>
+        <span><strong>Brightspace</strong><small>Start homework</small></span>
+      </a>
+      <a class="toc-item" href="#step2">
+        <span class="toc-number">02</span>
+        <span><strong>Pearson+</strong><small>Sign in &amp; access</small></span>
+      </a>
+      <a class="toc-item" href="#step3">
+        <span class="toc-number">03</span>
+        <span><strong>Mobile App</strong><small>Optional access</small></span>
+      </a>
+      <a class="toc-item" href="#help">
+        <span class="toc-number">?</span>
+        <span><strong>Need Help?</strong><small>Troubleshooting</small></span>
+      </a>
+    </div>
+    <div class="toc-tip">
+      <span>TIP</span>
+      <p>Complete Step 1 before opening Pearson+.</p>
+    </div>
+  </aside>
+
+  <main class="content-area">
+<section class="step" id="step1">
+  <div class="step-head">
+    <div class="num">1</div>
+    <div>
+      <h2>Attempt a Homework Assignment First</h2>
+      <p class="lead">This step verifies your enrollment and links your Brightspace account to Pearson.</p>
+    </div>
+  </div>
+
+  <div class="substeps">
+    <div class="substep">
+      <h3>Open Brightspace and your Calculus course</h3>
+      <p>Log in to Brightspace and select your Calculus course under <strong>My Courses</strong>.</p>
+      <div class="visual">
+        <img src="assets/brightspace-courses.png" alt="Dallas College Brightspace My Courses page, with student account information removed">
+        <div class="caption">Find your Calculus course under My Courses.</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <h3>Open the current week</h3>
+      <p>From the course homepage, click into the current week (for example, <strong>Week 1</strong>).</p>
+      <div class="visual">
+        <img src="assets/brightspace-course.png" alt="Dallas College Calculus course homepage, with student account information removed">
+        <div class="caption">Open the current week from the course homepage.</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <h3>Open a Pearson homework assignment</h3>
+      <p>Choose a Pearson homework assignment, such as <strong>Section 2.1 Homework</strong>, and <strong>attempt at least one question</strong>.</p>
+      <div class="visual">
+        <img src="assets/brightspace-homework.png" alt="Dallas College Calculus Week 1 page showing Pearson homework assignments, with student account information removed">
+        <div class="caption">Open a Pearson homework assignment and attempt a question.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="success">
+    <strong>Why this matters:</strong> According to the course guide, attempting a Pearson homework question is the step that verifies enrollment and links Brightspace to Pearson before the eTextbook unlocks.
+  </div>
+</section>
+
+<section class="step" id="step2">
+  <div class="step-head">
+    <div class="num">2</div>
+    <div>
+      <h2>Then Go to Pearson+</h2>
+      <p class="lead">After you have opened a homework assignment, sign in to Pearson+ with the same Pearson account.</p>
+    </div>
+  </div>
+
+  <div class="substeps">
+    <div class="substep">
+      <h3>Open Pearson+</h3>
+      <p>You can search for <strong>Pearson+</strong> and open the official <strong>Sign in | Pearson+</strong> result, or use the button below.</p>
+      <div class="path">
+        <span class="pill">Pearson+</span><span class="arrow">→</span><span class="pill">plus.pearson.com</span>
+      </div>
+      <p style="margin-top:14px"><a class="btn btn-primary" style="background:var(--blue);color:white" href="https://plus.pearson.com" target="_blank" rel="noopener">Open plus.pearson.com ↗</a></p>
+      <div class="visual">
+        <img src="assets/pearson-search.png" alt="Search results showing Pearson+ sign-in page, with student account information removed">
+        <div class="caption">Open the official Pearson+ sign-in result.</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <h3>Sign in with your Pearson account</h3>
+      <p>Enter the email address/username and password for your <strong>Pearson account</strong>.</p>
+      <div class="visual">
+        <img src="assets/pearson-signin.png" alt="Pearson+ sign-in page, with personal email and account information removed">
+        <div class="caption">Sign in with the same Pearson account you use for your Pearson coursework.</div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <h3>Find your eTextbook</h3>
+      <p>Your eTextbook should appear automatically under <strong>My eTextbooks</strong> once you have attempted the homework assignment.</p>
+      <div class="visual">
+        <img src="assets/pearson-library.png" alt="Pearson+ My eTextbooks library showing textbooks, with student account information removed">
+        <div class="caption">Look under My eTextbooks for your course book.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="step" id="step3">
+  <div class="step-head">
+    <div class="num">3</div>
+    <div>
+      <h2>Optional: Download the Pearson+ App</h2>
+      <p class="lead">You can also access the eTextbook from a phone or tablet.</p>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="substep">
+      <h3>Download Pearson+</h3>
+      <p>Download the free <strong>Pearson+</strong> app from the App Store or Google Play.</p>
+    </div>
+    <div class="substep">
+      <h3>Sign in with the same account</h3>
+      <p>Use the same Pearson account. Your eTextbook will be available in the app, where you can read or download it for offline access.</p>
+    </div>
+  </div>
+
+  <div class="bonus">
+    <h3>Bonus tip — Listen while you study</h3>
+    <p>The guide notes that the Pearson+ app includes an audiobook-style listening feature for many titles. When your book is open, look for the audio/listen icon to have the text read aloud.</p>
+  </div>
+</section>
+
+<section class="trouble" id="help">
+  <h2>Still having trouble?</h2>
+  <p>If you continue to have trouble accessing your course materials, the guide recommends reaching out to your instructor or Pearson Support.</p>
+</section>
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="container">Pearson eTextbook Access Guide · Student version</div>
+</footer>
+
+<script>
+(() => {
+  const navItems = [...document.querySelectorAll('.toc-item[href^="#"]')];
+  const sections = navItems
+    .map(item => document.querySelector(item.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    navItems.forEach(item => {
+      const active = item.getAttribute('href') === `#${id}`;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-current', active ? 'location' : 'false');
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (visible[0]) setActive(visible[0].target.id);
+  }, {
+    rootMargin: '-18% 0px -62% 0px',
+    threshold: [0, 0.15, 0.35, 0.6]
+  });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Set the initial state from the first section.
+  if (sections[0]) setActive(sections[0].id);
+})();
+</script>
+
+</body>
+</html>
